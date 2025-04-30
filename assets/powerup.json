@@ -1,0 +1,20 @@
+{"frames": {
+
+"powerup.png":
+{
+	"frame": {"x":1,"y":1,"w":16,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":18},
+	"sourceSize": {"w":16,"h":20}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "powerup.png",
+	"format": "RGBA8888",
+	"size": {"w":18,"h":20},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f8e3aaf5d926c1abfcc7873b4314e3fa:86e50ca64d349e5f191fbd8862eb622d:20f8493936649072556292a91be9a144$"
+}
+}
