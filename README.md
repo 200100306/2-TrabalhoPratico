@@ -1,9 +1,3 @@
-Alunos:
-João Santos-210100497
-Daniel Nunes-200100306
-Gonçalo Rosa-220001555
-
-
 Tema:
 O Tema de trabalho consiste num jogo sobre uma nave espacial que tem como
 função destruir objetos a partir de disparos que podem sair de ambos os lados , seja
@@ -17,9 +11,3 @@ ter uma página inicial antes do começo do mesmo no qual é explicado os contro
 esses mesmos controlos ao utilizador .
 
 Lista de Tarefas:
-->
-->
-->
-->
-->
-->
