@@ -1,4 +1,5 @@
 Tema:
+
 O Tema de trabalho consiste num jogo sobre uma nave espacial que tem como
 função destruir objetos a partir de disparos que podem sair de ambos os lados , seja
 nos objetos controlados pelo utilizador (neste caso a nave principal) e os objetos
