@@ -1,7 +1,7 @@
 class Ship extends Entity {
     constructor(x, y, spriteSheet, canvasWidth, canvasHeight) {
         super(x, y, 68, 72, spriteSheet, canvasWidth, canvasHeight);
-        this.vx = 2; // Velocidade horizontal
+        this.vx = 5; // Velocidade horizontal
         this.powerLevel = 1; // Nível de power-up da nave
         this.maxPowerLevel = 7; // Nível máximo de power-ups
         this.direction = { LEFT: 'left', RIGHT: 'right' };
