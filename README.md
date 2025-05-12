@@ -12,3 +12,12 @@ ter uma página inicial antes do começo do mesmo no qual é explicado os contro
 esses mesmos controlos ao utilizador .
 
 Lista de Tarefas:
+
+->Mundança de velocidade;
+
+->Mensagem de passagem de nivel;
+
+->Mudar sprites de nave;
+
+->Adição de movimentos UP(A)/DOWN(S);
+
