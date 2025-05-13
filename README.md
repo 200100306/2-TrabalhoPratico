@@ -15,9 +15,10 @@ Lista de Tarefas:
 
 ->Mundança de velocidade;
 
-->Mensagem de passagem de nivel;
+->Mensagem de passagem de nivel:
+    - Nivel 1, nivel 2, nivel 3, etc
 
 ->Mudar sprites de nave;
 
-->Adição de movimentos UP(A)/DOWN(S);
+->Adição de movimentos UP(A)/DOWN(S); (FEITO)
 
