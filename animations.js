@@ -95,21 +95,15 @@ function displayStartMenu() {
 
     // Imagens instruções jogo 
     let imgA = new Image();
-    imgA.src = './assets/Akey.jpg';
+    imgA.src = './assets/wasdKey.png';
     imgA.onload = function() {
-        drawingSurface.drawImage(imgA, canvas.width / 2.9 - 50, 2 * canvas.height / 2.7 - 60, 60, 60);
-    }
-
-    let imgD = new Image();
-    imgD.src = './assets/Dkey.jpg';
-    imgD.onload = function() {
-        drawingSurface.drawImage(imgD, canvas.width / 2.4 - 50, 2 * canvas.height / 2.7 - 60, 60, 60);
+        drawingSurface.drawImage(imgA, canvas.width / 2.9 - 15, 2 * canvas.height / 2.7 - 60, 100, 80);
     }
 
     let M1 = new Image();
     M1.src = './assets/M1.png';
     M1.onload = function() {
-        drawingSurface.drawImage(M1, canvas.width / 2.9 - 10, 2 * canvas.height / 2.3 - 60, 100, 100);
+        drawingSurface.drawImage(M1, canvas.width / 2.9 - 10, 2 * canvas.height / 2.3 - 70, 100, 100);
     }
 
     // Adiciona intruções
@@ -119,7 +113,7 @@ function displayStartMenu() {
 
     drawingSurface.fillStyle = 'white';
     drawingSurface.font = '24px Pixel, Arial';
-    drawingSurface.fillText('SHOOT', canvas.width / 1.6, 2 * canvas.height / 2.15 - 40);
+    drawingSurface.fillText('SHOOT', canvas.width / 1.6, 2 * canvas.height / 2.15 - 70);
 
     canvas.onclick = function(event) {
         let x = event.pageX - canvas.offsetLeft,
@@ -185,6 +179,13 @@ function gameLoop() {
         if (activeKeys[keyboard.RIGHT] || activeKeys[68]) { // Seta Direita & D
             ship.move(ship.direction.RIGHT);
         }
+        if (activeKeys[keyboard.DOWN] || activeKeys[83]) { // Seta Baixo & S
+            ship.move(ship.direction.DOWN);
+        }
+        if (activeKeys[keyboard.UP] || activeKeys[87]) { // Seta Cima & W
+            ship.move(ship.direction.UP);
+        }
+
 
 
         entities.forEach(entity => entity.update());

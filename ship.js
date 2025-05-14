@@ -1,10 +1,10 @@
 class Ship extends Entity {
     constructor(x, y, spriteSheet, canvasWidth, canvasHeight) {
         super(x, y, 68, 72, spriteSheet, canvasWidth, canvasHeight);
-        this.vx = 2; // Velocidade horizontal
+        this.vx = 5; // Velocidade horizontal
         this.powerLevel = 1; // Nível de power-up da nave
         this.maxPowerLevel = 7; // Nível máximo de power-ups
-        this.direction = { LEFT: 'left', RIGHT: 'right' };
+        this.direction = {LEFT: 'left', RIGHT: 'right', UP: 'up', DOWN: 'down'};
         this.spriteName = "ship.png"; // Define o nome padrão do sprite
         this.state = "idle"; // Corrige o estado inicial para corresponder aos nomes do JSON
         this.animationFrame = 0;
@@ -81,17 +81,26 @@ class Ship extends Entity {
     }
 
     move(direction) {
-        if (this.state === "exploding") return; // Ignora movimentos se a nave estiver explodindo
-    
-        this.isMoving = true;
-        this.state = "moving";
-        this.animationFrame = 0;
-        if (direction === this.direction.LEFT) {
-            this.x = Math.max(0, this.x - this.vx);
-        } else if (direction === this.direction.RIGHT) {
-            this.x = Math.min(this.canvasWidth - this.width, this.x + this.vx);
-        }
+    this.isMoving = true;
+    switch (direction) {
+        case this.direction.LEFT:
+            if (this.x - this.vx > 0)
+                this.x -= this.vx;
+            break;
+        case this.direction.RIGHT:
+            if (this.x + this.vx + this.width < this.canvasWidth)
+                this.x += this.vx;
+            break;
+        case this.direction.UP:
+            if (this.y - this.vx > 0)
+                this.y -= this.vx;
+            break;
+        case this.direction.DOWN:
+            if (this.y + this.vx + this.height < this.canvasHeight)
+                this.y += this.vx;
+            break;
     }
+}
 
     shoot() {
         if (this.state === "exploding") return;
