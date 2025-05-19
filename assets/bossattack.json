@@ -1,0 +1,36 @@
+{"frames": {
+
+"Boss-13.png":
+{
+	"frame": {"x":1,"y":1,"w":48,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":80},
+	"sourceSize": {"w":48,"h":80}
+},
+"Boss-14.png":
+{
+	"frame": {"x":1,"y":83,"w":48,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":80},
+	"sourceSize": {"w":48,"h":80}
+},
+"Boss-15.png":
+{
+	"frame": {"x":1,"y":165,"w":48,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":80},
+	"sourceSize": {"w":48,"h":80}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bossattack.png",
+	"format": "RGBA8888",
+	"size": {"w":50,"h":246},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3eaf672830acdca466ac279aa8dd49cf:91dacca335446c859ccee5c134eefb78:a4b6a493c1c138a41ca415e297113aef$"
+}
+}
