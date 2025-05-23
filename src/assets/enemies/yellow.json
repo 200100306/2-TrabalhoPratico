@@ -1,0 +1,48 @@
+{
+    "frames": {
+        "YELLOW_EXPLODIR_1.png": {
+            "frame": {"x": 1, "y": 1, "w": 42, "h": 31},
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {"x": 0, "y": 0, "w": 42, "h": 31},
+            "sourceSize": {"w": 42, "h": 31}
+        },
+        "YELLOW_EXPLODIR_2.png": {
+            "frame": {"x": 1, "y": 34, "w": 42, "h": 31},
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {"x": 0, "y": 0, "w": 42, "h": 31},
+            "sourceSize": {"w": 42, "h": 31}
+        },
+        "YELLOW_EXPLODIR_3.png": {
+            "frame": {"x": 45, "y": 1, "w": 42, "h": 31},
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {"x": 0, "y": 0, "w": 42, "h": 31},
+            "sourceSize": {"w": 42, "h": 31}
+        },
+        "YELLOW_EXPLODIR_4.png": {
+            "frame": {"x": 45, "y": 34, "w": 42, "h": 31},
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {"x": 0, "y": 0, "w": 42, "h": 31},
+            "sourceSize": {"w": 42, "h": 31}
+        },
+        "yellow.png": {
+            "frame": {"x": 1, "y": 67, "w": 42, "h": 34},
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {"x": 0, "y": 0, "w": 42, "h": 34},
+            "sourceSize": {"w": 42, "h": 34}
+        }
+    },
+    "meta": {
+        "app": "https://www.codeandweb.com/texturepacker",
+        "version": "1.0",
+        "image": "yellow.png",
+        "format": "RGBA8888",
+        "size": {"w": 88, "h": 102},
+        "scale": "1",
+        "smartupdate": "$TexturePacker:SmartUpdate:111f2abcd1234e567f89a12d34567890:123456789abcdef10fedcba9876543210:00112233445566778899aabbccddeeff$"
+    }
+}
