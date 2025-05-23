@@ -2,7 +2,7 @@
  * Serviço responsável por carregar os recursos gráficos (spritesheets).
  */
 
-import { SpriteSheet } from "../assets/spritesheet.js";
+import { SpriteSheet } from "../../assets/spritesheet.js";
 
 /**
  * Carrega todos os sprites necessários para o jogo e executa um callback ao final.

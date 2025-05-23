@@ -1,6 +1,6 @@
 import { Level } from "./level.js";
 import { PowerUp, LifePowerUp } from "../entities/powerups.js";
-import { Red, Green, Blue, Yellow } from "../entities/enemies/index.js";
+import { Red, Green, Blue, Yellow } from "../models/entities/enemies/index.js";
 
 export const levels = [
   new Level(1, [{ type: Red, count: 5 }], [{ type: PowerUp, count: 1 }], "Nível 1: Introdução básica ao jogo."),

@@ -2,9 +2,9 @@
  * Lógica de detecção e resolução de colisões entre entidades do jogo.
  */
 
-import { Bullet } from "../entities/bullet.js";
-import { PowerUp, LifePowerUp } from "../entities/powerups.js";
-import { Red, Green, Blue, Yellow } from "../entities/enemies/index.js";
+import { Bullet } from "../models/entities/bullet.js";
+import { PowerUp, LifePowerUp } from "../models/entities/powerups.js";
+import { Red, Green, Blue, Yellow } from "../models/entities/enemies/index.js";
 import { triggerGameOver, incrementScore, removeEntity } from "../game/init.js";
 
 export function handleCollisions(entities, ship, sounds) {
