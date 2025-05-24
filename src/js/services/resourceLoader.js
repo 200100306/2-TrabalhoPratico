@@ -11,7 +11,7 @@ import { SpriteSheet } from "../../assets/spritesheet.js";
  */
 export function loadAllResources(spriteSheets, callback) {
   const resourcesToLoad = [
-    { type: "ship", image: "./assets/player/ship.png", json: "./assets/enemies/ship.json" },
+    { type: "ship", image: "./assets/player/ship.png", json: "./assets/player/ship.json" },
     { type: "bulletLifePowerup", image: "./assets/objects/bullet_life_powerup.png", json: "./assets/objects/bullet_life_powerup.json" },
     { type: "red", image: "./assets/enemies/red.png", json: "./assets/enemies/red.json" },
     { type: "green", image: "./assets/enemies/green.png", json: "./assets/enemies/green.json" },

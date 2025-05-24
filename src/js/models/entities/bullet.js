@@ -1,3 +1,4 @@
+import { Entity } from "./entity.js";
 /**
  * Representa um projétil disparado pela nave ou inimigos.
  * Move-se com velocidade definida e remove-se ao sair do ecrã.

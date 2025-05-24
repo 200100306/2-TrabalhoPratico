@@ -5,7 +5,7 @@
 import { Bullet } from "../models/entities/bullet.js";
 import { PowerUp, LifePowerUp } from "../models/entities/powerups.js";
 import { Red, Green, Blue, Yellow } from "../models/entities/enemies/index.js";
-import { triggerGameOver, incrementScore, removeEntity } from "../game/init.js";
+import { triggerGameOver, incrementScore, removeEntity } from "../main.js";
 
 export function handleCollisions(entities, ship, sounds) {
   handleBulletHits(entities, sounds);

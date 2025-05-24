@@ -1,5 +1,5 @@
 import { Level } from "./level.js";
-import { PowerUp, LifePowerUp } from "../entities/powerups.js";
+import { PowerUp, LifePowerUp } from "../models/entities/powerups.js";
 import { Red, Green, Blue, Yellow } from "../models/entities/enemies/index.js";
 
 export const levels = [

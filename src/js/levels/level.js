@@ -1,6 +1,4 @@
-import { PowerUp, LifePowerUp } from "../entities/powerups.js";
-import { Red, Green, Yellow, Blue } from "../entities/enemies/index.js";
-import { getShip, getGameEntities, removeEntity } from "../game/init.js";
+import { getShip, getGameEntities, removeEntity } from "../main.js";
 
 /**
  * Representa um nível do jogo.

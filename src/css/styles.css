@@ -1,14 +1,15 @@
 @font-face {
   font-family: 'Pixel';
-  src: url('./assets/Pixel-Regular.ttf') format('truetype');
+  src: url('../assets/Pixel-Regular.ttf') format('truetype');
 }
 
 body {
   height: 100%; margin: 0;
+  font-family: 'Pixel', sans-serif;
 }
 
 canvas {
   display: block;
-  background: url("./assets/background1.gif");
+  background: url("../assets/background1.gif");
   background-size: 100% 100%;
 }
