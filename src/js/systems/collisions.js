@@ -4,7 +4,7 @@
 
 import { Bullet } from "../models/entities/bullet.js";
 import { PowerUp, LifePowerUp } from "../models/entities/powerups.js";
-import { Red, Green, Blue, Yellow } from "../models/entities/enemies/index.js";
+import { Red, Green, Blue, Yellow, Boss } from "../models/entities/enemies/index.js";
 import { triggerGameOver, incrementScore, removeEntity } from "../main.js";
 
 export function handleCollisions(entities, ship, sounds) {
@@ -45,14 +45,15 @@ function handlePowerUpPickups(entities, ship, sounds) {
 }
 
 function handleShipCrashes(entities, ship) {
+  if (ship.state === "exploding") return; 
+
   entities.forEach(entity => {
     if (isEnemy(entity) && ship.collidesWith(entity)) {
       ship.explode();
-      triggerGameOver();
     }
   });
 }
 
 function isEnemy(entity) {
-  return entity instanceof Red || entity instanceof Green || entity instanceof Yellow || entity instanceof Blue;
+  return entity instanceof Red || entity instanceof Green || entity instanceof Yellow || entity instanceof Blue || entity instanceof Boss;
 }

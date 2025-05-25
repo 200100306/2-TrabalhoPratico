@@ -1,5 +1,7 @@
 import { Entity } from "./entity.js";
 import { Bullet } from "./bullet.js";
+import { getGameEntities, triggerGameOver } from "../../main.js";
+import { sounds } from "../../services/soundManager.js";
 
 const ShipConfig = {
   width: 68,
@@ -27,7 +29,7 @@ const State = {
 };
 
 export class Ship extends Entity {
-  /**
+   /**
    * Esta classe representa a nave do jogador.
    * Ela herda da classe Entity e adiciona funcionalidades específicas para a nave.
    * 
@@ -37,9 +39,10 @@ export class Ship extends Entity {
    * @param {number} canvasWidth - Largura do canvas
    * @param {number} canvasHeight - Altura do canvas
    */
-  constructor(x, y, spriteSheet, canvasWidth, canvasHeight) {
+  constructor(x, y, spriteSheet, canvasWidth, canvasHeight, bulletSpriteSheet) {
     super(x, y, ShipConfig.width, ShipConfig.height, spriteSheet, canvasWidth, canvasHeight);
 
+    this.bulletSpriteSheet = bulletSpriteSheet;
     this.vx = ShipConfig.velocity;
     this.powerLevel = 1;
     this.maxPowerLevel = ShipConfig.maxPowerLevel;
@@ -56,11 +59,9 @@ export class Ship extends Entity {
     this.lives = ShipConfig.lives;
     this.scaleDuration = ShipConfig.scaleDuration;
     this.maxAnimationTime = ShipConfig.maxAnimationTime;
+    this.explosionDuration = 10; // ✅ move aqui a duração da explosão
   }
 
-  /**
-   * Aumenta o nível de power-up da nave, se ainda não atingiu o máximo.
-   */
   upgrade() {
     if (this.powerLevel < this.maxPowerLevel) {
       this.powerLevel++;
@@ -68,17 +69,11 @@ export class Ship extends Entity {
     }
   }
 
-  /**
-   * Ativa o efeito visual de escala temporário.
-   */
   activateScale() {
     this.isScaled = true;
     this.scaleTimer = this.scaleDuration;
   }
 
-  /**
-   * Atualiza o estado da nave, incluindo animação, movimento, explosão e efeitos.
-   */
   update() {
     this.updateAnimation();
     this.updateMovementState();
@@ -86,9 +81,6 @@ export class Ship extends Entity {
     this.updateScale();
   }
 
-  /**
-   * Atualiza a animação da nave de acordo com o tempo.
-   */
   updateAnimation() {
     this.animationTimer++;
     if (this.animationTimer > this.maxAnimationTime) {
@@ -97,10 +89,6 @@ export class Ship extends Entity {
     }
   }
 
-  /**
-   * Atualiza o estado de movimento da nave.
-   * Retorna ao estado 'idle' se a nave parou de se mover.
-   */
   updateMovementState() {
     if (!this.isMoving && this.state === State.MOVING) {
       this.state = State.IDLE;
@@ -109,10 +97,6 @@ export class Ship extends Entity {
     this.isMoving = false;
   }
 
-  /**
-   * Atualiza o efeito de escala da nave.
-   * Desativa o efeito quando o tempo termina.
-   */
   updateScale() {
     if (this.isScaled) {
       this.scaleTimer--;
@@ -122,23 +106,21 @@ export class Ship extends Entity {
     }
   }
 
-  /**
-   * Atualiza o estado de explosão e verifica se o jogo deve terminar ou reiniciar.
-   */
   updateExplosionState() {
     if (this.state === State.EXPLODING) {
       this.explosionTimer++;
-      lifeLostSound.play();
+      sounds.lifeLost.play();
 
       if (this.explosionTimer > this.explosionDuration) {
+        console.log("Explosão concluída");
         this.lives--;
         this.explosionTimer = 0;
 
         if (this.lives > 0) {
           this.resetPosition();
+          this.state = State.IDLE;
         } else {
-          gameOver = true;
-          displayGameOver();
+          triggerGameOver();
         }
       }
       return;
@@ -149,11 +131,6 @@ export class Ship extends Entity {
     }
   }
 
-  /**
-   * Move a nave na direção especificada, respeitando os limites do canvas.
-   * 
-   * @param {string} direction - Direção do movimento (left, right, up, down)
-   */
   move(direction) {
     this.isMoving = true;
 
@@ -175,9 +152,6 @@ export class Ship extends Entity {
     this.state = State.MOVING;
   }
 
-  /**
-   * Cria balas e as dispara em ângulos diferentes com base no nível de power-up.
-   */
   shoot() {
     if (this.state === State.EXPLODING) return;
 
@@ -198,43 +172,31 @@ export class Ship extends Entity {
       const bullet = new Bullet(
         bulletX,
         bulletY,
-        spriteSheets['bulletlifepowerup'],
+        this.bulletSpriteSheet,
         this.canvasWidth,
         this.canvasHeight,
         bulletVx,
         bulletVy
       );
 
-      entities.push(bullet);
+      getGameEntities().push(bullet);
     }
 
-    shotSound.play();
+    sounds.shot.play();
   }
 
-  /**
-   * Ativa o estado de explosão da nave e reinicia os contadores.
-   */
   explode() {
     this.state = State.EXPLODING;
     this.animationFrame = 0;
     this.explosionTimer = 0;
-    this.explosionDuration = 10;
   }
 
-  /**
-   * Reposiciona a nave no centro inferior do canvas e reinicia o estado.
-   */
   resetPosition() {
     this.x = this.canvasWidth / 2 - this.width / 2;
     this.y = this.canvasHeight - this.height - 35;
     this.state = State.IDLE;
   }
 
-  /**
-   * Desenha a nave no canvas, considerando o estado atual e possíveis efeitos de escala.
-   * 
-   * @param {CanvasRenderingContext2D} context - Contexto de renderização do canvas
-   */
   draw(context) {
     context.save();
 

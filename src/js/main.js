@@ -16,6 +16,7 @@ let entities = [], activeKeys = {};
 let ship;
 let score = 0, enemiesDestroyed = 0, timeElapsed = 0;
 let currentLevelIndex = 0, gameOver = false;
+let animationFrameId;
 
 
 const keyboard = {
@@ -49,6 +50,12 @@ async function preloadFonts() {
 function setupInputListeners() {
     window.addEventListener('keydown', e => activeKeys[e.keyCode] = true);
     window.addEventListener('keyup', e => activeKeys[e.keyCode] = false);
+
+    canvas.addEventListener("click", () => {
+        if (ship && ship.state !== "exploding") {
+            ship.shoot();
+        }
+    });
 }
 
 function showStartMenu() {
@@ -57,7 +64,14 @@ function showStartMenu() {
 
 function startGame() {
     loadAllResources(spriteSheets, () => {
-        ship = new Ship(canvas.width / 2 - 30, canvas.height - 110, spriteSheets['ship'], canvas.width, canvas.height);
+        console.log("All resources loaded:", Object.keys(spriteSheets));
+        ship = new Ship(canvas.width / 2 - 30, 
+            canvas.height - 110, 
+            spriteSheets['ship'], 
+            canvas.width, 
+            canvas.height,
+            spriteSheets["bulletLifePowerup"]);
+            
         entities.push(ship);
         startLevel(currentLevelIndex);
         gameLoop();
@@ -67,7 +81,7 @@ function startGame() {
 
 function startLevel(index) {
     entities = [ship];
-    levels[index].startLevel();
+    levels[index].startLevel(spriteSheets);
 }
 
 function gameLoop() {
@@ -79,7 +93,7 @@ function gameLoop() {
     renderScene();
     checkLevelCompletion();
 
-    requestAnimationFrame(gameLoop);
+    animationFrameId = requestAnimationFrame(gameLoop);
 }
 
 function updateBackground() {
@@ -100,13 +114,14 @@ function updateEntities() {
 }
 
 function renderScene() {
-    drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
-    entities.forEach(e => e.draw(drawingSurface));
-    drawUI(drawingSurface, spriteSheets, ship, score, timeElapsed);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    entities.forEach(e => e.draw(context));
+    drawUI(context, spriteSheets, ship, score, timeElapsed);
 }
 
 function checkLevelCompletion() {
     const hasEnemies = entities.some(e => e instanceof Red || e instanceof Green || e instanceof Yellow || e instanceof Blue);
+    //console.log(`Checking level completion: ${hasEnemies ? 'Enemies present' : 'No enemies left'}`);
     if (!hasEnemies) {
         currentLevelIndex++;
         if (currentLevelIndex < levels.length) {
@@ -114,21 +129,26 @@ function checkLevelCompletion() {
         } else {
             gameOver = true;
             sounds.victory.play();
-            displayVictoryScreen(drawingSurface, canvas, score, enemiesDestroyed);
+            displayVictoryScreen(context, canvas, score, enemiesDestroyed);
         }
     }
 }
 
 export function triggerGameOver() {
     gameOver = true;
+    cancelAnimationFrame(animationFrameId);
     sounds.backgroundMusic.pause();
     sounds.death.play();
-    displayGameOver(drawingSurface, canvas, score, enemiesDestroyed);
+    displayGameOver(context, canvas, score, enemiesDestroyed);
 }
 
 export function incrementScore(value) {
     score += value;
     enemiesDestroyed++;
+}
+
+export function setEntities(newEntities) {
+    entities = newEntities;
 }
 
 export function getGameEntities() {

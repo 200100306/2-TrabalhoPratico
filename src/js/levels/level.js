@@ -1,4 +1,4 @@
-import { getShip, getGameEntities, removeEntity } from "../main.js";
+import { getShip, setEntities, getGameEntities } from "../main.js";
 
 /**
  * Representa um nível do jogo.
@@ -12,19 +12,21 @@ export class Level {
     this.description = description;
   }
 
-  startLevel() {
+  startLevel(spriteSheets) {
+    console.log(`Iniciando nível ${this.levelNumber}: ${this.description}`);
     this.clearEntities();
-    this.spawnEnemies();
-    this.spawnPowerUps();
+    this.spawnEnemies(spriteSheets);
+    this.spawnPowerUps(spriteSheets);
     this.reinsertShip();
   }
 
   clearEntities() {
-    window.entities = [];
+    setEntities([]);
   }
 
-  spawnEnemies() {
+  spawnEnemies(spriteSheets) {
     this.enemyConfig.forEach(({ type, count }) => {
+      console.log(`Gerando ${count} inimigos do tipo ${type.name}`);
       const spacing = canvas.width / (count + 1);
       const spriteKey = type.name.toLowerCase();
       const spriteSheet = spriteSheets[spriteKey];
@@ -37,12 +39,12 @@ export class Level {
       for (let i = 0; i < count; i++) {
         const x = spacing * (i + 1);
         const y = 80;
-        entities.push(new type(x, y, spriteSheet, canvas.width, canvas.height));
+        getGameEntities().push(new type(x, y, spriteSheet, canvas.width, canvas.height));
       }
     });
   }
 
-  spawnPowerUps() {
+  spawnPowerUps(spriteSheets) {
     this.powerUpConfig.forEach(({ type, count }) => {
       const spriteKey = 'bulletLifePowerup';
       const sprite = spriteSheets[spriteKey];
@@ -51,13 +53,13 @@ export class Level {
         const x = Math.random() * canvas.width;
         const y = 0;
         const instance = new type(x, y, sprite, canvas.width, canvas.height);
-        entities.push(instance);
+        getGameEntities().push(instance);
       }
     });
   }
 
   reinsertShip() {
     const ship = getShip();
-    if (ship) entities.push(ship);
+    if (ship) getGameEntities().push(ship);
   }
 }

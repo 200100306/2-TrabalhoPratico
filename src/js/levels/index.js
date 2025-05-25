@@ -1,9 +1,10 @@
 import { Level } from "./level.js";
 import { PowerUp, LifePowerUp } from "../models/entities/powerups.js";
-import { Red, Green, Blue, Yellow } from "../models/entities/enemies/index.js";
+import { Red, Green, Blue, Yellow, Boss } from "../models/entities/enemies/index.js";
 
 export const levels = [
-  new Level(1, [{ type: Red, count: 5 }], [{ type: PowerUp, count: 1 }], "Nível 1: Introdução básica ao jogo."),
+  //new Level(1, [{ type: Red, count: 5 }], [{ type: PowerUp, count: 1 }], "Nível 1: Introdução básica ao jogo."),
+  new Level(1, [{ type: Boss, count: 1 }, { type: Red, count: 1 },], [{ type: PowerUp, count: 1 }], "Nível 1: Introdução básica ao jogo."),
   new Level(2, [{ type: Red, count: 8 }, { type: Yellow, count: 4 }], [{ type: PowerUp, count: 1 }], "Nível 2: Introdução de inimigos amarelos com movimentos mais dinâmicos."),
   new Level(3, [
     { type: Red, count: 12 },
@@ -33,5 +34,12 @@ export const levels = [
     { type: Yellow, count: 10 },
     { type: Green, count: 10 },
     { type: Blue, count: 10 }
-  ], [{ type: PowerUp, count: 2 }], "Nível 6: Tu Não Vais Sobreviver.")
+  ], [{ type: PowerUp, count: 2 }], "Nível 6: Tu Não Vais Sobreviver."),
+  new Level(7, [
+    { type: Red, count: 20 },
+    { type: Yellow, count: 15 },
+    { type: Green, count: 10 },
+    { type: Blue, count: 10 },
+    { type: Boss, count: 1 }
+  ], [{ type: PowerUp, count: 2 }], "Nível 7: Estrela da morte."),
 ];
