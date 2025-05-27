@@ -1,0 +1,20 @@
+{"frames": {
+
+"Arcade - Galaga - General Sprites.png":
+{
+	"frame": {"x":0,"y":0,"w":1090,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1090,"h":512},
+	"sourceSize": {"w":1090,"h":512}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Boss.png",
+	"format": "RGBA8888",
+	"size": {"w":1090,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f4a26008e01abecf502df154fdef9668:c49bae30aec76741fce2e934526b6537:13bc11e6396572da70ac211c05326f9e$"
+}
+}
