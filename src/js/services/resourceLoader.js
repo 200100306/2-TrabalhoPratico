@@ -17,9 +17,7 @@ export function loadAllResources(spriteSheets, callback) {
     { type: "green", image: "./assets/enemies/green.png", json: "./assets/enemies/green.json" },
     { type: "yellow", image: "./assets/enemies/yellow.png", json: "./assets/enemies/yellow.json" },
     { type: "blue", image: "./assets/enemies/blue.png", json: "./assets/enemies/blue.json" },
-    { type: "boss", image: "./assets/enemies/bossmovements.png", json: "./assets/enemies/bossmovements.json" },
-    { type: "bossattack", image: "./assets/enemies/bossattack.png", json: "./assets/enemies/bossattack.json" },
-    { type: "bossexplode", image: "./assets/enemies/bossexplode.png", json: "./assets/enemies/bossexplode.json" },
+    { type: "boss", image: "./assets/enemies/boss_spritesheet.png", json: "./assets/enemies/boss_spritesheet.json" },
   ];
 
   let loaded = 0;

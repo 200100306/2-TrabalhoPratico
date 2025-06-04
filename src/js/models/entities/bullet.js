@@ -47,6 +47,41 @@ export class Bullet extends Entity {
    * @param {CanvasRenderingContext2D} context 
    */
   draw(context) {
-    super.draw(context);
+    const frameData = this.spriteSheet.frameData.frames[this.spriteName];
+    if (!frameData) return;
+
+    const sx = frameData.frame.x;
+    const sy = frameData.frame.y;
+    const sw = frameData.frame.w;
+    const sh = frameData.frame.h;
+    const dx = this.x;
+    const dy = this.y;
+    const dw = sw;
+    const dh = sh;
+
+    if (frameData.rotated) {
+      // Se o frame estiver girado no atlas, desenha com rotação de -90°
+      context.save();
+      // Translada para o centro do destino (dx + dw/2, dy + dh/2)
+      context.translate(dx + dw / 2, dy + dh / 2);
+      // Roda -90 graus (−Math.PI/2)
+      context.rotate(Math.PI / 2);
+      // Ao desenhar, trocamos w⇄h, pois o atlas armazena o quadro rotacionado
+      context.drawImage(
+        this.spriteSheet.image,
+        sx,    // origem x no atlas
+        sy,    // origem y no atlas
+        sw,    // largura no atlas (antes da rotação)
+        sh,    // altura no atlas (antes da rotação)
+        -dh / 2, // x no canvas rotacionado (metade da altura original)
+        -dw / 2, // y no canvas rotacionado (metade da largura original)
+        dh,    // desenha “largura” = altura original
+        dw     // desenha “altura” = largura original
+      );
+      context.restore();
+    } else {
+      // Desenha normalmente
+      super.draw(context);
+    }
   }
 }

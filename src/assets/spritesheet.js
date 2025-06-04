@@ -25,6 +25,7 @@ export class SpriteSheet {
    */
   drawFrame(ctx, frameName, x, y) {
     const frame = this.frameData.frames[frameName]?.frame;
+
     if (!frame) {
       console.warn(`Frame '${frameName}' não encontrado na spritesheet.`);
       return;

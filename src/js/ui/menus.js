@@ -24,7 +24,7 @@ export function displayStartMenu(canvas, ctx, onStartGame) {
   ctx.font = '64px Pixel, Arial';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('Space Invaders', canvas.width / 2, canvas.height / 2.5 - 80);
+  ctx.fillText('Galactic Firestorm', canvas.width / 2, canvas.height / 2.5 - 80);
 
   ctx.fillStyle = buttonGradient;
   ctx.font = '48px Pixel, Arial';

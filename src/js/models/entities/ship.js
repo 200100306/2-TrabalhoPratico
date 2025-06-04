@@ -170,13 +170,8 @@ export class Ship extends Entity {
       const bulletY = this.y;
 
       const bullet = new Bullet(
-        bulletX,
-        bulletY,
-        this.bulletSpriteSheet,
-        this.canvasWidth,
-        this.canvasHeight,
-        bulletVx,
-        bulletVy
+        bulletX,  bulletY, this.bulletSpriteSheet, this.canvasWidth, this.canvasHeight,
+        bulletVx, bulletVy
       );
 
       getGameEntities().push(bullet);

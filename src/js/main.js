@@ -1,7 +1,7 @@
 import { SpriteSheet } from "../assets/spritesheet.js";
 import { Ship } from "./models/entities/ship.js";
 import { levels } from "./levels/index.js";
-import { Red, Green, Blue, Yellow } from "./models/entities/enemies/index.js";
+import { Red, Green, Blue, Yellow, Boss } from "./models/entities/enemies/index.js";
 import { drawUI } from "./ui/hud.js";
 import { handleCollisions } from "./systems/collisions.js";
 import { displayVictoryScreen, displayGameOver } from "./ui/screens.js";
@@ -120,7 +120,7 @@ function renderScene() {
 }
 
 function checkLevelCompletion() {
-    const hasEnemies = entities.some(e => e instanceof Red || e instanceof Green || e instanceof Yellow || e instanceof Blue);
+    const hasEnemies = entities.some(e => e instanceof Red || e instanceof Green || e instanceof Yellow || e instanceof Blue || e instanceof Boss);
     //console.log(`Checking level completion: ${hasEnemies ? 'Enemies present' : 'No enemies left'}`);
     if (!hasEnemies) {
         currentLevelIndex++;
